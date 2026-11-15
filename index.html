@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Under Maintenance</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0B1120',
+                        primary: '#6366F1',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glow {
+            filter: blur(100px);
+        }
+
+        .floating {
+            animation: floating 5s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .gear {
+            animation: rotate 12s linear infinite;
+            transform-origin: center;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .3;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-white min-h-screen overflow-x-hidden">
+
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/20 rounded-full glow"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full glow"></div>
+
+        <div class="absolute inset-0 opacity-[0.04]"
+            style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 50px 50px;">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="relative min-h-screen flex flex-col">
+
+        <!-- Navbar -->
+        <header class="w-full max-w-7xl mx-auto px-6 lg:px-10 py-7">
+            <div class="flex items-center justify-between">
+
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12" />
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">coredigi<span class="text-indigo-400">.</span></span>
+                </a>
+
+                <!-- Status -->
+                <div class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 pulse-dot"></span>
+                    <span class="text-xs text-gray-300 font-medium">System Maintenance</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="flex-1 flex items-center justify-center px-6 py-12">
+            <div class="max-w-6xl w-full mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 text-center lg:text-left">
+
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-400/20 mb-7">
+                        <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                        <span class="text-xs font-semibold tracking-widest text-indigo-300 uppercase">
+                            We'll Be Back Soon
+                        </span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                        Something
+                        <span
+                            class="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-400">
+                            Amazing
+                        </span>
+                        Is Coming.
+                    </h1>
+
+                    <p class="mt-6 text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        Kami sedang melakukan pemeliharaan dan peningkatan sistem untuk memberikan pengalaman yang lebih
+                        baik kepada Anda.
+                        Website akan segera kembali online.
+                    </p>
+
+                    <!-- Countdown -->
+                    <div class="mt-9">
+                        <p class="text-xs text-gray-500 uppercase tracking-[0.2em] font-semibold mb-4">
+                            Estimated Time Remaining
+                        </p>
+
+                        <div class="flex justify-center lg:justify-start gap-3 sm:gap-4">
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[75px]">
+                                <div id="days" class="text-3xl font-bold">00</div>
+                                <div class="text-[10px] text-gray-500 uppercase mt-2 tracking-widest">Days</div>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[75px]">
+                                <div id="hours" class="text-3xl font-bold">00</div>
+                                <div class="text-[10px] text-gray-500 uppercase mt-2 tracking-widest">Hours</div>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[75px]">
+                                <div id="minutes" class="text-3xl font-bold">00</div>
+                                <div class="text-[10px] text-gray-500 uppercase mt-2 tracking-widest">Minutes</div>
+                            </div>
+                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[75px]">
+                                <div id="seconds" class="text-3xl font-bold text-indigo-400">00</div>
+                                <div class="text-[10px] text-gray-500 uppercase mt-2 tracking-widest">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress -->
+                    <div class="mt-9 max-w-md mx-auto lg:mx-0">
+                        <div class="flex justify-between text-xs mb-3">
+                            <span class="text-gray-400">Maintenance Progress</span>
+                            <span class="text-indigo-400 font-semibold">75%</span>
+                        </div>
+                        <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full w-3/4 bg-gradient-to-r from-indigo-500 to-blue-400 rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="mt-9 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="mailto:support@example.com"
+                            class="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-indigo-400 transition">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                    d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Contact Support
+                        </a>
+
+                        <span class="hidden sm:block w-1 h-1 rounded-full bg-gray-600"></span>
+
+                        <span class="text-sm text-gray-500">
+                            Thank you for your patience.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Illustration -->
+                <div class="order-1 lg:order-2 flex justify-center">
+                    <div class="relative w-full max-w-md aspect-square flex items-center justify-center">
+
+                        <!-- Glow -->
+                        <div class="absolute w-72 h-72 bg-indigo-500/20 rounded-full glow"></div>
+
+                        <!-- Outer Circle -->
+                        <div class="absolute w-[85%] h-[85%] border border-indigo-400/10 rounded-full"></div>
+                        <div class="absolute w-[68%] h-[68%] border border-dashed border-indigo-400/20 rounded-full">
+                        </div>
+
+                        <!-- Floating Card -->
+                        <div
+                            class="relative z-10 w-64 h-64 sm:w-72 sm:h-72 rounded-[2rem] bg-gradient-to-br from-indigo-500/20 to-blue-500/5 border border-white/10 backdrop-blur-xl shadow-2xl shadow-indigo-900/30 flex items-center justify-center floating">
+
+                            <!-- Gear -->
+                            <svg class="absolute top-8 right-8 w-14 h-14 text-indigo-300/50 gear" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 8a4 4 0 100 8 4 4 0 000-8zm0-6v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+                            </svg>
+
+                            <!-- Main Icon -->
+                            <div class="text-center">
+                                <div
+                                    class="w-28 h-28 mx-auto rounded-3xl bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-xl shadow-indigo-500/30">
+                                    <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M14.7 6.3a1 1 0 00-1.4 0l-7 7a1 1 0 000 1.4l3 3a1 1 0 001.4 0l7-7a1 1 0 000-1.4l-3-3zM5 19l-2 2m11-16 5 5" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M13 5l2-2 6 6-2 2" />
+                                    </svg>
+                                </div>
+                                <p class="mt-5 text-sm font-semibold tracking-wide text-indigo-200">
+                                    Improving Experience
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Elements -->
+                        <div
+                            class="absolute top-10 left-5 w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-400/20 backdrop-blur-md flex items-center justify-center floating">
+                            <svg class="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 3v3m0 12v3m9-9h-3M6 12H3" />
+                            </svg>
+                        </div>
+
+                        <div class="absolute bottom-12 right-2 w-14 h-14 rounded-2xl bg-purple-500/20 border border-purple-400/20 backdrop-blur-md flex items-center justify-center floating"
+                            style="animation-delay: 1s">
+                            <svg class="w-7 h-7 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.6-3.4a9 9 0 11-14.2 0" />
+                            </svg>
+                        </div>
+
+                        <div class="absolute bottom-5 left-12 w-3 h-3 bg-indigo-400 rounded-full pulse-dot"></div>
+                        <div class="absolute top-20 right-5 w-2 h-2 bg-blue-400 rounded-full pulse-dot"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="relative border-t border-white/5 px-6 py-6">
+            <div
+                class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+                <p>© <span id="year"></span> YourBrand. All rights reserved.</p>
+                <p>Crafted with care. Better experience is on the way.</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Countdown Script -->
+    <script>
+        // Ubah estimasi waktu maintenance di sini
+        const maintenanceEnd = new Date();
+        maintenanceEnd.setHours(maintenanceEnd.getHours() + 24);
+
+        function updateCountdown() {
+            const now = new Date();
+            const distance = maintenanceEnd - now;
+
+            if (distance <= 0) {
+                document.getElementById("days").textContent = "00";
+                document.getElementById("hours").textContent = "00";
+                document.getElementById("minutes").textContent = "00";
+                document.getElementById("seconds").textContent = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((distance / (1000 * 60)) % 60);
+            const seconds = Math.floor((distance / 1000) % 60);
+
+            document.getElementById("days").textContent = String(days).padStart(2, "0");
+            document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+        }
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+
+</html>
