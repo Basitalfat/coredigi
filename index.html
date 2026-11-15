@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Under Maintenance</title>
-
+    <title>Situs Sedang Dalam Pemeliharaan</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
@@ -21,310 +17,331 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
-                    colors: {
-                        dark: '#0B1120',
-                        primary: '#6366F1',
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
                     }
                 }
             }
         }
     </script>
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-
-        .glow {
-            filter: blur(100px);
+        .gradient-bg {
+            background: radial-gradient(circle at top left, rgba(99, 102, 241, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.15), transparent 40%),
+                        #0f172a;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .floating {
-            animation: floating 5s ease-in-out infinite;
+        /* Responsive improvements for mobile */
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
 
-        @keyframes floating {
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+        }
 
-            0%,
-            100% {
-                transform: translateY(0);
+        header, main, footer {
+            min-width: 0;
+        }
+
+        header > div:first-child {
+            min-width: 0;
+        }
+
+        header > div:first-child span:last-child {
+            overflow-wrap: anywhere;
+        }
+
+        main h1, main p {
+            overflow-wrap: break-word;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+                gap: 24px;
             }
 
-            50% {
-                transform: translateY(-15px);
+            header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+                padding-top: 4px;
+            }
+
+            header > div:first-child {
+                font-size: clamp(14px, 4vw, 18px);
+                letter-spacing: 0;
+            }
+
+            header > div:last-child {
+                font-size: 11px;
+                padding: 6px 10px;
+            }
+
+            main {
+                padding-top: 12px;
+                padding-bottom: 12px;
+            }
+
+            main > div:first-child {
+                margin-bottom: 24px;
+            }
+
+            main h1 {
+                font-size: clamp(1.8rem, 8vw, 2.5rem);
+                line-height: 1.2;
+            }
+
+            main > p {
+                font-size: 15px;
+                line-height: 1.7;
+                margin-bottom: 24px;
+            }
+
+            .glass-card {
+                padding: 16px 12px;
+                border-radius: 16px;
+            }
+
+            .glass-card .grid {
+                gap: 6px;
+            }
+
+            .glass-card .grid > div {
+                min-width: 0;
+                padding: 10px 4px;
+            }
+
+            .glass-card .grid span:first-child {
+                font-size: clamp(1.25rem, 6vw, 1.75rem);
+                line-height: 1.25;
+            }
+
+            .glass-card .grid span:last-child {
+                font-size: 9px;
+                letter-spacing: 0.04em;
+            }
+
+            #notify-form {
+                width: 100%;
+            }
+
+            #notify-form input,
+            #notify-form button {
+                min-width: 0;
+                width: 100%;
+            }
+
+            footer {
+                text-align: center;
+                padding-top: 20px;
+            }
+
+            footer > div {
+                justify-content: center;
             }
         }
 
-        .gear {
-            animation: rotate 12s linear infinite;
-            transform-origin: center;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
+        @media (max-width: 360px) {
+            body {
+                padding: 12px;
             }
 
-            to {
-                transform: rotate(360deg);
+            .glass-card .grid {
+                gap: 4px;
+            }
+
+            .glass-card .grid > div {
+                padding: 8px 2px;
+            }
+
+            .glass-card .grid span:first-child {
+                font-size: 1.15rem;
+            }
+
+            .glass-card .grid span:last-child {
+                font-size: 8px;
+            }
+
+            main h1 {
+                font-size: 1.75rem;
             }
         }
 
-        .pulse-dot {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: .3;
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
+<body class="gradient-bg min-h-screen text-slate-100 flex flex-col justify-between p-4 sm:p-6 md:p-8">
 
-<body class="bg-dark text-white min-h-screen overflow-x-hidden">
-
-    <!-- Background Decoration -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/20 rounded-full glow"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full glow"></div>
-
-        <div class="absolute inset-0 opacity-[0.04]"
-            style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 50px 50px;">
+    <!-- Header Logo / Brand -->
+    <header class="w-full max-w-5xl mx-auto flex justify-between items-center py-2">
+        <div class="flex items-center gap-2 font-bold text-xl tracking-wide text-white">
+            <span class="w-3 h-3 rounded-full bg-indigo-500 inline-block animate-ping"></span>
+            <span>basitalfat.github.io</span>
         </div>
-    </div>
+        <div class="text-xs sm:text-sm text-slate-400 font-medium px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700">
+            <i class="fa-solid font-sharp fa-wrench text-amber-400 mr-1.5"></i> Pemeliharaan Sistem
+        </div>
+    </header>
 
-    <!-- Main Content -->
-    <main class="relative min-h-screen flex flex-col">
+    <!-- Main Maintenance Content -->
+    <main class="w-full max-w-3xl mx-auto my-auto py-8 flex flex-col items-center text-center">
+        
+        <!-- Smile Icon & Badge Container -->
+        <div class="relative mb-8 group">
+            <!-- Glow Effect Behind Icon -->
+            <div class="absolute -inset-1 bg-gradient-to-r from-amber-400 to-indigo-500 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+            
+            <!-- Main Smile Icon Circle -->
+            <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-slate-800 border-2 border-indigo-500/30 flex items-center justify-center shadow-2xl animate-float">
+                <i class="fa-regular fa-face-smile text-6xl sm:text-7xl text-amber-400"></i>
+            </div>
 
-        <!-- Navbar -->
-        <header class="w-full max-w-7xl mx-auto px-6 lg:px-10 py-7">
-            <div class="flex items-center justify-between">
+            <!-- Floating Gear Icon Accent -->
+            <div class="absolute -bottom-1 -right-1 w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center border-2 border-slate-900 shadow-lg">
+                <i class="fa-solid fa-gear animate-spin" style="animation-duration: 8s;"></i>
+            </div>
+        </div>
 
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-3">
-                    <div
-                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12" />
-                        </svg>
-                    </div>
-                    <span class="text-xl font-bold tracking-tight">coredigi<span class="text-indigo-400">.</span></span>
-                </a>
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+            Kami Sedang Melakukan <br class="hidden sm:inline" />
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-indigo-300 to-purple-300">
+                Peningkatan Layanan :)
+            </span>
+        </h1>
 
-                <!-- Status -->
-                <div class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 pulse-dot"></span>
-                    <span class="text-xs text-gray-300 font-medium">System Maintenance</span>
+        <!-- Subtitle Description -->
+        <p class="text-base sm:text-lg text-slate-300 max-w-xl mb-8 leading-relaxed font-normal">
+            Website kami sedang dalam proses pemeliharaan berkala untuk menyajikan pengalaman yang lebih baik. Terima kasih atas kesabaran Anda!
+        </p>
+
+        <!-- Countdown Timer Card -->
+        <div class="glass-card w-full max-w-md rounded-2xl p-4 sm:p-6 mb-8 shadow-xl">
+            <p class="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-4">Perkiraan Selesai Dalam</p>
+            <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+                <div class="bg-slate-800/80 p-2 sm:p-3 rounded-xl border border-slate-700/50">
+                    <span id="hours" class="block text-2xl sm:text-3xl font-bold text-indigo-400">02</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">Jam</span>
+                </div>
+                <div class="bg-slate-800/80 p-2 sm:p-3 rounded-xl border border-slate-700/50">
+                    <span id="minutes" class="block text-2xl sm:text-3xl font-bold text-indigo-400">45</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">Menit</span>
+                </div>
+                <div class="bg-slate-800/80 p-2 sm:p-3 rounded-xl border border-slate-700/50">
+                    <span id="seconds" class="block text-2xl sm:text-3xl font-bold text-indigo-400">00</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">Detik</span>
+                </div>
+                <div class="bg-slate-800/80 p-2 sm:p-3 rounded-xl border border-slate-700/50">
+                    <span id="ms" class="block text-2xl sm:text-3xl font-bold text-amber-400">99</span>
+                    <span class="text-[10px] sm:text-xs text-slate-400 uppercase tracking-wider">MS</span>
                 </div>
             </div>
-        </header>
+        </div>
 
-        <!-- Hero -->
-        <section class="flex-1 flex items-center justify-center px-6 py-12">
-            <div class="max-w-6xl w-full mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-                <!-- Text Content -->
-                <div class="order-2 lg:order-1 text-center lg:text-left">
-
-                    <div
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-400/20 mb-7">
-                        <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
-                        <span class="text-xs font-semibold tracking-widest text-indigo-300 uppercase">
-                            We'll Be Back Soon
-                        </span>
-                    </div>
-
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-                        Something
-                        <span
-                            class="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-400">
-                            Amazing
-                        </span>
-                        Is Coming.
-                    </h1>
-
-                    <p class="mt-6 text-gray-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
-                        Kami sedang melakukan pemeliharaan dan peningkatan sistem untuk memberikan pengalaman yang lebih
-                        baik kepada Anda.
-                        Website akan segera kembali online.
-                    </p>
-
-                    <!-- Countdown -->
-                    <div class="mt-9">
-                        <p class="text-xs text-gray-500 uppercase tracking-[0.2em] font-semibold mb-4">
-                            Estimated Time Remaining
-                        </p>
-
-                        <div class="flex justify-center lg:justify-start gap-3 sm:gap-4">
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[75px]">
-                                <div id="days" class="text-3xl font-bold">00</div>
-                                <div class="text-[10px] text-gray-500 uppercase mt-2 tracking-widest">Days</div>
-                            </div>
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[75px]">
-                                <div id="hours" class="text-3xl font-bold">00</div>
-                                <div class="text-[10px] text-gray-500 uppercase mt-2 tracking-widest">Hours</div>
-                            </div>
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[75px]">
-                                <div id="minutes" class="text-3xl font-bold">00</div>
-                                <div class="text-[10px] text-gray-500 uppercase mt-2 tracking-widest">Minutes</div>
-                            </div>
-                            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[75px]">
-                                <div id="seconds" class="text-3xl font-bold text-indigo-400">00</div>
-                                <div class="text-[10px] text-gray-500 uppercase mt-2 tracking-widest">Seconds</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Progress -->
-                    <div class="mt-9 max-w-md mx-auto lg:mx-0">
-                        <div class="flex justify-between text-xs mb-3">
-                            <span class="text-gray-400">Maintenance Progress</span>
-                            <span class="text-indigo-400 font-semibold">75%</span>
-                        </div>
-                        <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                            <div class="h-full w-3/4 bg-gradient-to-r from-indigo-500 to-blue-400 rounded-full"></div>
-                        </div>
-                    </div>
-
-                    <!-- Contact -->
-                    <div class="mt-9 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="mailto:support@example.com"
-                            class="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-indigo-400 transition">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-                                    d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                            Contact Support
-                        </a>
-
-                        <span class="hidden sm:block w-1 h-1 rounded-full bg-gray-600"></span>
-
-                        <span class="text-sm text-gray-500">
-                            Thank you for your patience.
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Illustration -->
-                <div class="order-1 lg:order-2 flex justify-center">
-                    <div class="relative w-full max-w-md aspect-square flex items-center justify-center">
-
-                        <!-- Glow -->
-                        <div class="absolute w-72 h-72 bg-indigo-500/20 rounded-full glow"></div>
-
-                        <!-- Outer Circle -->
-                        <div class="absolute w-[85%] h-[85%] border border-indigo-400/10 rounded-full"></div>
-                        <div class="absolute w-[68%] h-[68%] border border-dashed border-indigo-400/20 rounded-full">
-                        </div>
-
-                        <!-- Floating Card -->
-                        <div
-                            class="relative z-10 w-64 h-64 sm:w-72 sm:h-72 rounded-[2rem] bg-gradient-to-br from-indigo-500/20 to-blue-500/5 border border-white/10 backdrop-blur-xl shadow-2xl shadow-indigo-900/30 flex items-center justify-center floating">
-
-                            <!-- Gear -->
-                            <svg class="absolute top-8 right-8 w-14 h-14 text-indigo-300/50 gear" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M12 8a4 4 0 100 8 4 4 0 000-8zm0-6v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
-                            </svg>
-
-                            <!-- Main Icon -->
-                            <div class="text-center">
-                                <div
-                                    class="w-28 h-28 mx-auto rounded-3xl bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-xl shadow-indigo-500/30">
-                                    <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                            d="M14.7 6.3a1 1 0 00-1.4 0l-7 7a1 1 0 000 1.4l3 3a1 1 0 001.4 0l7-7a1 1 0 000-1.4l-3-3zM5 19l-2 2m11-16 5 5" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                            d="M13 5l2-2 6 6-2 2" />
-                                    </svg>
-                                </div>
-                                <p class="mt-5 text-sm font-semibold tracking-wide text-indigo-200">
-                                    Improving Experience
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Floating Elements -->
-                        <div
-                            class="absolute top-10 left-5 w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-400/20 backdrop-blur-md flex items-center justify-center floating">
-                            <svg class="w-6 h-6 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 3v3m0 12v3m9-9h-3M6 12H3" />
-                            </svg>
-                        </div>
-
-                        <div class="absolute bottom-12 right-2 w-14 h-14 rounded-2xl bg-purple-500/20 border border-purple-400/20 backdrop-blur-md flex items-center justify-center floating"
-                            style="animation-delay: 1s">
-                            <svg class="w-7 h-7 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m5.6-3.4a9 9 0 11-14.2 0" />
-                            </svg>
-                        </div>
-
-                        <div class="absolute bottom-5 left-12 w-3 h-3 bg-indigo-400 rounded-full pulse-dot"></div>
-                        <div class="absolute top-20 right-5 w-2 h-2 bg-blue-400 rounded-full pulse-dot"></div>
-                    </div>
-                </div>
-
+        <!-- Email Subscription Box -->
+        <div class="w-full max-w-md">
+            <form id="notify-form" onsubmit="handleNotify(event)" class="flex flex-col sm:flex-row gap-2">
+                <input 
+                    type="email" 
+                    required 
+                    placeholder="Masukkan email Anda..." 
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800/90 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm transition"
+                >
+                <button 
+                    type="submit" 
+                    class="w-full sm:w-auto px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-medium text-sm transition duration-200 flex items-center justify-center gap-2 whitespace-nowrap shadow-lg shadow-indigo-600/30"
+                >
+                    <i class="fa-regular fa-bell"></i>
+                    <span>Kabari Saya</span>
+                </button>
+            </form>
+            <!-- Message Notification Container -->
+            <div id="toast-message" class="hidden mt-3 text-sm p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300">
+                <i class="fa-solid fa-circle-check mr-1.5"></i> Terima kasih! Kami akan memberitahu Anda saat situs kembali online.
             </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="relative border-t border-white/5 px-6 py-6">
-            <div
-                class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
-                <p>© <span id="year"></span> YourBrand. All rights reserved.</p>
-                <p>Crafted with care. Better experience is on the way.</p>
-            </div>
-        </footer>
+        </div>
 
     </main>
 
-    <!-- Countdown Script -->
+    <!-- Footer Social Links & Copyright -->
+    <footer class="w-full max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-800/80 text-xs text-slate-400">
+        <p>&copy; 2026 Lucius. Hak Cipta Dilindungi.</p>
+        <div class="flex items-center gap-4 text-base">
+            <a href="#" class="hover:text-indigo-400 transition" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="hover:text-indigo-400 transition" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-indigo-400 transition" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="hover:text-indigo-400 transition" title="Contact Email"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
     <script>
-        // Ubah estimasi waktu maintenance di sini
-        const maintenanceEnd = new Date();
-        maintenanceEnd.setHours(maintenanceEnd.getHours() + 24);
+        // Countdown Timer Logic
+        // Set target countdown duration: 2 jam 45 menit dari sekarang
+        const targetTime = new Date().getTime() + (2 * 60 * 60 * 1000) + (45 * 60 * 1000);
 
-        function updateCountdown() {
-            const now = new Date();
-            const distance = maintenanceEnd - now;
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = targetTime - now;
 
-            if (distance <= 0) {
-                document.getElementById("days").textContent = "00";
-                document.getElementById("hours").textContent = "00";
-                document.getElementById("minutes").textContent = "00";
-                document.getElementById("seconds").textContent = "00";
+            if (distance < 0) {
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                document.getElementById('ms').innerText = '00';
                 return;
             }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((distance / (1000 * 60)) % 60);
-            const seconds = Math.floor((distance / 1000) % 60);
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const milliseconds = Math.floor((distance % 1000) / 10);
 
-            document.getElementById("days").textContent = String(days).padStart(2, "0");
-            document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-            document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-            document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            document.getElementById('ms').innerText = String(milliseconds).padStart(2, '0');
         }
 
-        document.getElementById("year").textContent = new Date().getFullYear();
+        setInterval(updateTimer, 50);
 
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+        // Form Notification Handler
+        function handleNotify(event) {
+            event.preventDefault();
+            const form = event.target;
+            const toast = document.getElementById('toast-message');
+            
+            // Sembunyikan form dan tampilkan pesan sukses
+            form.style.display = 'none';
+            toast.classList.remove('hidden');
+        }
     </script>
-
 </body>
-
 </html>
